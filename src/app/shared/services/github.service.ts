@@ -12,9 +12,16 @@ export class GithubService {
   constructor(private http: HttpClient) { }
 
   getUserRepos(user: string) {
-    this.http.get(`${BASE_URL}/users/${user}/repos`).pipe(
+    return this.http.get(`${BASE_URL}/users/${user}/repos`).pipe(
       map(response => response),
       catchError(err => err)
-    ).subscribe(data => console.log(data))
+    );
+  }
+
+  getRepoContributors(username: string, repoName: string) {
+    return this.http.get(`${BASE_URL}/${username}/${repoName}/contributors`).pipe(
+      map(response => response),
+      catchError(err => err)
+    );
   }
 }

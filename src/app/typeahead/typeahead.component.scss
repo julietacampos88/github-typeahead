@@ -1,0 +1,25 @@
+:host {
+  flex: 1 0 auto;
+}
+
+.typeahead {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  height: 100%;
+  flex: 1 0 auto;
+
+  .typeahead--form {
+    .typeahead--input {
+      width: 550px;
+      height: 60px;
+      border-radius: 3px;
+      padding: 0 15px;
+      font-size: 20px;
+      line-height: 60px;
+    }
+  }
+}

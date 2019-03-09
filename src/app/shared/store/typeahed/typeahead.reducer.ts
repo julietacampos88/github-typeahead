@@ -1,6 +1,5 @@
 import { Action } from '@ngrx/store';
 import * as TypeaheadActions from './typeahead.actions';
-import { ActionTypes } from './typeahead.actions';
 
 export interface TypeaheadState {
   repos: Array<any>;
@@ -14,10 +13,11 @@ export const initialState: TypeaheadState = {
   noRepos: false,
 };
 
-export function typeaheadReducer(state = initialState, action: TypeaheadActions.SetReposFromUsername) {
+export function typeaheadReducer(state: TypeaheadState = initialState, action: TypeaheadActions.Actions) {
   switch (action.type) {
-    case ActionTypes.SET_REPOS_FROM_USERNAME: {
+    case TypeaheadActions.SET_REPOS_FROM_USERNAME: {
       const data = action.payload;
+      console.log('SET REPOS FROM USERNAME', data);
       return {
         ...state,
         repos: data,
@@ -26,7 +26,7 @@ export function typeaheadReducer(state = initialState, action: TypeaheadActions.
       };
     }
 
-    case ActionTypes.USERNAME_NOT_FOUND: {
+    case TypeaheadActions.USERNAME_NOT_FOUND: {
       return {
         ...state,
         errorMessageShow: true,
@@ -35,7 +35,7 @@ export function typeaheadReducer(state = initialState, action: TypeaheadActions.
       };
     }
 
-    case ActionTypes.USER_HAS_NO_REPOS: {
+    case TypeaheadActions.USER_HAS_NO_REPOS: {
       return {
         ...state,
         errorMessageShow: false,
@@ -49,3 +49,11 @@ export function typeaheadReducer(state = initialState, action: TypeaheadActions.
     }
   }
 }
+
+export const getCurrentReposSelection = (state: TypeaheadState) => {
+  console.log('FROM SELECTOR');
+  console.log(state.repos);
+  return state.repos;
+};
+export const isUserWithoutRepos = (state: TypeaheadState) => state.noRepos;
+export const doesUserExist = (state: TypeaheadState) => state.errorMessageShow;

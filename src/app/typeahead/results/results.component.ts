@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import * as RootState from '../../shared/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-results',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultsComponent implements OnInit {
 
-  constructor() { }
+  repos$: Array<any>;
+
+  constructor(private store: Store<RootState.State>) {
+  }
 
   ngOnInit() {
+    this.store.pipe(select(RootState.GetReposValueSelector)).subscribe(repos => this.repos$ = repos);
   }
 
 }

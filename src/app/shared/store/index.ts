@@ -57,4 +57,13 @@ export const effects = [
 
 // typeaheadSelectors
 
-export const TypeaheadFeatureSelector = createFeatureSelector<TypeaheadReducer.TypeaheadState>('repos');
+export const TypeaheadFeatureSelector = createFeatureSelector<State, TypeaheadReducer.TypeaheadState>('typeahead');
+export const GetReposValueSelector = createSelector(
+  TypeaheadFeatureSelector,
+  TypeaheadReducer.getCurrentReposSelection
+);
+
+export const ShowErrorsValueSelector = createSelector(
+  TypeaheadFeatureSelector,
+  TypeaheadReducer.doesUserExist
+);

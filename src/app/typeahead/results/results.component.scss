@@ -1,0 +1,11 @@
+.autocomplete-list {
+  width: 550px;
+  list-style: none;
+  padding: 0;
+  
+  .autocomplete-list--element {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 0;
+  }
+}

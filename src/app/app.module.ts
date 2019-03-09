@@ -13,6 +13,8 @@ import { GithubService } from './shared/services/github.service';
 import { GraphComponent } from './graph/graph.component';
 import { typeaheadReducer } from './shared/store/typeahed/typeahead.reducer';
 import { TypeaheadEffects } from './shared/store/typeahed/typeahead.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { TypeaheadEffects } from './shared/store/typeahed/typeahead.effects';
     ReactiveFormsModule,
     StoreModule.forRoot({ typeahead: typeaheadReducer }),
     EffectsModule.forRoot([TypeaheadEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [
     GithubService

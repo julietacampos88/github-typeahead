@@ -4,9 +4,9 @@
 
 .typeahead {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-content: center;
   align-items: center;
   height: 100%;

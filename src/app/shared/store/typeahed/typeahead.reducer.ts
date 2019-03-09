@@ -1,23 +1,32 @@
-import { Action } from '@ngrx/store';
 import * as TypeaheadActions from './typeahead.actions';
 
 export interface TypeaheadState {
   repos: Array<any>;
   errorMessageShow: boolean;
   noRepos: boolean;
+  currentUser: string;
 }
 
 export const initialState: TypeaheadState = {
   repos: [],
   errorMessageShow: false,
   noRepos: false,
+  currentUser: '',
 };
 
 export function typeaheadReducer(state: TypeaheadState = initialState, action: TypeaheadActions.Actions) {
   switch (action.type) {
+
+    case TypeaheadActions.GET_REPOS_FROM_USERNAME: {
+      const data = action.payload;
+      return {
+        ...state,
+        currentUser: data,
+      };
+    }
+
     case TypeaheadActions.SET_REPOS_FROM_USERNAME: {
       const data = action.payload;
-      console.log('SET REPOS FROM USERNAME', data);
       return {
         ...state,
         repos: data,
@@ -50,10 +59,7 @@ export function typeaheadReducer(state: TypeaheadState = initialState, action: T
   }
 }
 
-export const getCurrentReposSelection = (state: TypeaheadState) => {
-  console.log('FROM SELECTOR');
-  console.log(state.repos);
-  return state.repos;
-};
+export const getCurrentReposSelection = (state: TypeaheadState) => state.repos;
+export const getCurrentUserSelection = (state: TypeaheadState) => state.currentUser;
 export const isUserWithoutRepos = (state: TypeaheadState) => state.noRepos;
 export const doesUserExist = (state: TypeaheadState) => state.errorMessageShow;

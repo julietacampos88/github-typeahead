@@ -8,13 +8,17 @@ import {
 
 import * as TypeaheadReducer from './typeahed/typeahead.reducer';
 import { TypeaheadEffects } from './typeahed/typeahead.effects';
+import * as ContributorsReducer from './contributors/contributors.reducer';
+import { ContributorsEffects } from './contributors/contributors.effects';
 
 export interface State {
   typeahead: TypeaheadReducer.TypeaheadState;
+  repo: ContributorsReducer.ContributorsState;
 }
 
 export const reducers: ActionReducerMap<State> = {
   typeahead: TypeaheadReducer.typeaheadReducer,
+  repo: ContributorsReducer.contributorsReducer,
 };
 
 export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
@@ -53,6 +57,7 @@ metaReducers = metaReducers.concat(devMetaReducers); // metaReducers.concat(!env
 
 export const effects = [
   TypeaheadEffects,
+  ContributorsEffects,
 ];
 
 // typeaheadSelectors
@@ -66,4 +71,22 @@ export const GetReposValueSelector = createSelector(
 export const ShowErrorsValueSelector = createSelector(
   TypeaheadFeatureSelector,
   TypeaheadReducer.doesUserExist
+);
+
+export const NoReposValueSelector = createSelector(
+  TypeaheadFeatureSelector,
+  TypeaheadReducer.isUserWithoutRepos
+);
+
+export const GetCurrentUserValueSelection = createSelector(
+  TypeaheadFeatureSelector,
+  TypeaheadReducer.getCurrentUserSelection
+);
+
+// contributors selectors
+
+export const ContributorsFeatureSelector = createFeatureSelector<State, ContributorsReducer.ContributorsState>('repo');
+export const GetRepoContributorsValueSelector = createSelector(
+  ContributorsFeatureSelector,
+  ContributorsReducer.getCurrentContributors
 );

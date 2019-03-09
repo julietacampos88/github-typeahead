@@ -19,7 +19,7 @@ export class GithubService {
   }
 
   getRepoContributors(username: string, repoName: string) {
-    return this.http.get(`${BASE_URL}/${username}/${repoName}/contributors`).pipe(
+    return this.http.get(`${BASE_URL}/repos/${username}/${repoName}/contributors`).pipe(
       map(response => response),
       catchError(err => err)
     );

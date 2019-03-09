@@ -1,11 +1,28 @@
 .autocomplete-list {
-  width: 550px;
+  width: 584px;
   list-style: none;
   padding: 0;
-  
+  margin: 0;
+
   .autocomplete-list--element {
     border: 1px solid #ccc;
+    border-top: 0;
     padding: 10px;
     margin: 0;
+    cursor: pointer;
   }
+
+  .autocomplete-list--element:first-child {
+    border-top: 1px solid #ccc;
+  }
+
+  .autocomplete-list--element:hover {
+    background: #ccc;
+  }
+
+  .autocomplete-list--octicon {
+    display: inline-block;
+    margin-right: 1em;
+  }
+
 }

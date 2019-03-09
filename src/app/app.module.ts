@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import * as RootSelector from './shared/store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,13 +16,17 @@ import { typeaheadReducer } from './shared/store/typeahed/typeahead.reducer';
 import { TypeaheadEffects } from './shared/store/typeahed/typeahead.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { OcticonsDirective } from './shared/octicons.directive';
+import { contributorsReducer } from './shared/store/contributors/contributors.reducer';
+import { ContributorsEffects } from './shared/store/contributors/contributors.effects';
 
 @NgModule({
   declarations: [
     AppComponent,
     TypeaheadComponent,
     ResultsComponent,
-    GraphComponent
+    GraphComponent,
+    OcticonsDirective
   ],
   imports: [
     BrowserModule,
@@ -29,8 +34,8 @@ import { environment } from '../environments/environment';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({ typeahead: typeaheadReducer }),
-    EffectsModule.forRoot([TypeaheadEffects]),
+    StoreModule.forRoot(RootSelector.reducers),
+    EffectsModule.forRoot(RootSelector.effects),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [

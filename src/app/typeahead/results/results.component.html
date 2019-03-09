@@ -1,6 +1,7 @@
 <ul id="results" class="autocomplete-list" role="listbox" tabindex="0">
-  <li class="autocomplete-list--element" *ngFor="let repo of repos$">
-    {{ repo.name }}
+  <li class="autocomplete-list--element" (click)="getContributors(repo.name)" *ngFor="let repo of repos$ | async">
+    <span class="autocomplete-list--octicon" appOcticon="repo" width="14"></span>{{ repo.name }} <br />
+    <span class="autocomplete-list--octicon" appOcticon="star" width="14"></span>{{ repo.stargazers_count }}
   </li>
 </ul>
 <span id="initInstr" style="display: none;"

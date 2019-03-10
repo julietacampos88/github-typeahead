@@ -14,6 +14,7 @@ export class ResultsComponent implements OnInit {
 
   repos$: Observable<any>;
   currentUser: string;
+  visibleResuls = false;
 
   constructor(private store: Store<RootState.State>, private router: Router) {
   }

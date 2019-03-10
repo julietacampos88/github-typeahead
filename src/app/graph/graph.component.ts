@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 import * as RootState from '../shared/store';
 import { Observable } from 'rxjs';
 
@@ -12,7 +11,7 @@ import { Observable } from 'rxjs';
 export class GraphComponent implements OnInit {
 
   graphData$: Observable<any>;
-  view: any[] = [700, 400];
+  repoName$: Observable<string>;
 
   // options
   showXAxis = true;
@@ -32,6 +31,7 @@ export class GraphComponent implements OnInit {
 
   ngOnInit() {
     this.graphData$ = this.store.pipe(select(RootState.GetRepoContributorsValueSelector));
+    this.repoName$ = this.store.pipe(select(RootState.GetCurrentRepoValueSelector));
   }
 
 }

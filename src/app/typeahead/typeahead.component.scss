@@ -3,23 +3,15 @@
 }
 
 .typeahead {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: center;
-  align-items: center;
   height: 100%;
   flex: 1 0 auto;
+  position: relative;
+  margin: 0 auto;
+  width: 70%;
 
   .typeahead--form {
-    .typeahead--input {
-      width: 550px;
-      height: 60px;
-      border-radius: 3px;
-      padding: 0 15px;
-      font-size: 20px;
-      line-height: 60px;
+    .typeahead--input__full-width {
+      width: 100%;
     }
   }
 }

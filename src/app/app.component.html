@@ -1,8 +1,16 @@
-<header>
-  This is the header
+<header class="header">
+  <mat-toolbar [color]="mat-primary">
+    <a routerLink="/" routerLinkActive="active">
+      <h1  class="header--h1">
+        <span class="header--octicon" appOcticon="mark-github" width="20"></span>Github Repo Typeahead
+      </h1>
+    </a>
+  </mat-toolbar>
 </header>
 <app-typeahead></app-typeahead>
 <router-outlet></router-outlet>
 <footer class="footer">
-  Made with ❤️ by Julieta Campos
+  <mat-toolbar>
+    <span class="footer--text">Made with ❤️ by Julieta Campos</span>
+  </mat-toolbar>
 </footer>

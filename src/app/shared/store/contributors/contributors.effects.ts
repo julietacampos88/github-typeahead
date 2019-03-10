@@ -21,6 +21,7 @@ export class ContributorsEffects {
         return this.githubService.getRepoContributors(user, repo)
           .pipe(
             map((data: any) => {
+              console.log(data);
               if (data && data.length > 0) {
                 const newContributors = data.map(contributor => {
                   return { name: contributor.login, value: contributor.contributions };

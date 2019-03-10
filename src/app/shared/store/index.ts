@@ -90,3 +90,8 @@ export const GetRepoContributorsValueSelector = createSelector(
   ContributorsFeatureSelector,
   ContributorsReducer.getCurrentContributors
 );
+
+export const GetCurrentRepoValueSelector = createSelector(
+  ContributorsFeatureSelector,
+  ContributorsReducer.getCurrentRepo
+);

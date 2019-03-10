@@ -1,14 +1,18 @@
-<ngx-charts-bar-vertical
-  [view]="view"
-  [scheme]="colorScheme"
-  [results]="graphData$ | async"
-  [gradient]="gradient"
-  [xAxis]="showXAxis"
-  [yAxis]="showYAxis"
-  [legend]="showLegend"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxisLabel]="xAxisLabel"
-  [yAxisLabel]="yAxisLabel"
->
-</ngx-charts-bar-vertical>
+<section class="graph">
+  <h2>{{ repoName$ | async }}</h2>
+  <div>
+      <ngx-charts-bar-vertical
+      [scheme]="colorScheme"
+      [results]="graphData$ | async"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+    >
+    </ngx-charts-bar-vertical>
+  </div>
+</section>

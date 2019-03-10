@@ -1,11 +1,18 @@
+:host {
+  position: absolute;
+  top: 60px;
+}
+
 .autocomplete-list {
-  width: 584px;
+  width: 100%;
   list-style: none;
   padding: 0;
   margin: 0;
   max-height: 300px;
   overflow: scroll;
   z-index: 1000;
+  visibility: hidden;
+  background: white;
 
   .autocomplete-list--element {
     border: 1px solid #ccc;
@@ -27,5 +34,8 @@
     display: inline-block;
     margin-right: 1em;
   }
+}
 
+.display {
+  visibility: visible;
 }

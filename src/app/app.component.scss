@@ -4,6 +4,25 @@
   height: inherit;
 }
 
+.header {
+  width: 100%;
+  margin: 0 0 1em 0;
+
+  .header--h1 {
+    font-size: 20px;
+    line-height: 60px;
+    margin: 0;
+  }
+
+  .header--octicon {
+    margin: 0 0.5em;
+  }
+}
+
 .footer {
   flex-shrink: 0;
+  
+  .footer--text {
+    font-size: 10px;
+  }
 }

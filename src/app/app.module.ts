@@ -7,6 +7,11 @@ import { EffectsModule } from '@ngrx/effects';
 import * as RootSelector from './shared/store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import {
+  MatAutocompleteModule,
+  MatInputModule,
+  MatToolbarModule
+} from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +42,9 @@ import { OcticonsDirective } from './shared/octicons.directive';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     BrowserAnimationsModule,
     NgxChartsModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    MatToolbarModule,
   ],
   providers: [
     GithubService

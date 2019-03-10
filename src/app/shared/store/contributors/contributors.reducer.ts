@@ -2,10 +2,12 @@ import * as ContributorActions from './contributors.actions';
 
 export interface ContributorsState {
   contributors: Array<any>;
+  currentRepo: string;
 }
 
 export const initialState: ContributorsState = {
-  contributors: []
+  contributors: [],
+  currentRepo: '',
 };
 
 export function contributorsReducer(state: ContributorsState = initialState, action: ContributorActions.Actions) {
@@ -14,7 +16,15 @@ export function contributorsReducer(state: ContributorsState = initialState, act
       const data = action.payload;
       return {
         ...state,
-        contributors: data
+        contributors: data,
+      };
+    }
+
+    case ContributorActions.GET_REPO_CONTRIBUTORS: {
+      const data = action.payload;
+      return {
+        ...state,
+        currentRepo: data.repo
       };
     }
 
@@ -25,3 +35,4 @@ export function contributorsReducer(state: ContributorsState = initialState, act
 }
 
 export const getCurrentContributors = (state: ContributorsState) => state.contributors;
+export const getCurrentRepo = (state: ContributorsState) => state.currentRepo;

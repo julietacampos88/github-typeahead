@@ -1,6 +1,21 @@
 <section class="typeahead">
   <form [formGroup]="githubForm" class="typeahead--form">
-    <input formControlName="username" class="typeahead--input" type="text" />
+    <div data-widget="accessible-autocomplete">
+      <mat-form-field class="typeahead--input__full-width">
+        <input
+          formControlName="username"
+          type="text"
+          matInput
+          [matAutocomplete]="auto"
+          placeholder="Write a github username"
+          class="typeahead--input"
+        />
+      </mat-form-field>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let repo of repos$ | async" class="typeahead--option" (click)="getContributors(repo.name)">
+          <span class="typeahead--octicon" appOcticon="repo" width="14"></span>&nbsp;{{ repo.name }}
+        </mat-option>
+      </mat-autocomplete>
+    </div>
   </form>
-  <app-results></app-results>
 </section>

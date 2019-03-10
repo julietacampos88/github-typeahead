@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { GithubService } from '../shared/services/github.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import * as RootState from '../shared/store/index';
 import * as TypeaheadActions from '../shared/store/typeahed/typeahead.actions';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
+import * as ContributorActions from '../shared/store/contributors/contributors.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-typeahead',
@@ -15,8 +16,10 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
 
   githubForm: FormGroup;
   formObservable: Subscription;
+  repos$: Observable<any>;
+  currentUser: string;
 
-  constructor(private store: Store<RootState.State>, private fb: FormBuilder) { }
+  constructor(private store: Store<RootState.State>, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.createForm();
@@ -26,6 +29,8 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
         this.store.dispatch(new TypeaheadActions.GetReposFromUsername(value.username));
       }
     });
+    this.repos$ = this.store.pipe(select(RootState.GetReposValueSelector));
+    this.store.pipe(select(RootState.GetCurrentUserValueSelection)).subscribe(user => this.currentUser = user);
   }
 
   ngOnDestroy() {
@@ -36,6 +41,12 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
     this.githubForm = this.fb.group({
       username: [''],
     });
+  }
+
+  getContributors(repo: string) {
+    console.log('Get contributor');
+    this.store.dispatch(new ContributorActions.GetRepoContributors({user: this.currentUser, repo}));
+    this.router.navigate(['/repo']);
   }
 
 }

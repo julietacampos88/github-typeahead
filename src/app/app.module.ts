@@ -16,7 +16,6 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TypeaheadComponent } from './typeahead/typeahead.component';
-import { ResultsComponent } from './typeahead/results/results.component';
 import { GithubService } from './shared/services/github.service';
 import { GraphComponent } from './graph/graph.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -27,7 +26,6 @@ import { OcticonsDirective } from './shared/octicons.directive';
   declarations: [
     AppComponent,
     TypeaheadComponent,
-    ResultsComponent,
     GraphComponent,
     OcticonsDirective
   ],

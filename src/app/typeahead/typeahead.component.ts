@@ -18,6 +18,8 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
   formObservable: Subscription;
   repos$: Observable<any>;
   currentUser: string;
+  hasError = false;
+  hasNoRepos = false;
 
   constructor(private store: Store<RootState.State>, private fb: FormBuilder, private router: Router) { }
 
@@ -31,6 +33,8 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
     });
     this.repos$ = this.store.pipe(select(RootState.GetReposValueSelector));
     this.store.pipe(select(RootState.GetCurrentUserValueSelection)).subscribe(user => this.currentUser = user);
+    this.store.pipe(select(RootState.NoReposValueSelector)).subscribe(hasRepos => this.hasNoRepos = hasRepos);
+    this.store.pipe(select(RootState.ShowErrorsValueSelector)).subscribe(errors => this.hasError = errors);
   }
 
   ngOnDestroy() {

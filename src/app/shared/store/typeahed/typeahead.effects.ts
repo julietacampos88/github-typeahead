@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map, catchError, switchMap } from 'rxjs/operators';
 import { GithubService } from '../../services/github.service';
 import * as TypeaheadActions from './typeahead.actions';
@@ -22,10 +22,9 @@ export class TypeaheadEffects {
               }
               return new TypeaheadActions.UserHasNoRepos();
             }),
-            // catchError((err) => {
-            //   console.log(err);
-            //   return new TypeaheadActions.UsernameNotFound();
-            // })
+            catchError((err) => {
+              return of(new TypeaheadActions.UsernameNotFound());
+            })
           );
       })
     );

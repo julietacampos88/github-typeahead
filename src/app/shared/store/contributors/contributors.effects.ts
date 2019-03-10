@@ -22,7 +22,10 @@ export class ContributorsEffects {
           .pipe(
             map((data: any) => {
               if (data && data.length > 0) {
-                return new ContributorsActions.SetRepoContributors(data);
+                const newContributors = data.map(contributor => {
+                  return { name: contributor.login, value: contributor.contributions };
+                });
+                return new ContributorsActions.SetRepoContributors(newContributors);
               }
             }),
             // catchError((err) => {

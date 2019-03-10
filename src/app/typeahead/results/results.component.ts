@@ -3,6 +3,7 @@ import { Store, select } from '@ngrx/store';
 import * as RootState from '../../shared/store';
 import { Observable } from 'rxjs';
 import * as ContributorActions from '../../shared/store/contributors/contributors.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-results',
@@ -14,7 +15,7 @@ export class ResultsComponent implements OnInit {
   repos$: Observable<any>;
   currentUser: string;
 
-  constructor(private store: Store<RootState.State>) {
+  constructor(private store: Store<RootState.State>, private router: Router) {
   }
 
   ngOnInit() {
@@ -25,6 +26,7 @@ export class ResultsComponent implements OnInit {
   getContributors(repo: string) {
     console.log('Get contributor');
     this.store.dispatch(new ContributorActions.GetRepoContributors({user: this.currentUser, repo}));
+    this.router.navigate(['/repo']);
   }
 
 }

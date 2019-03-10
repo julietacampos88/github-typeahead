@@ -3,6 +3,9 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  max-height: 300px;
+  overflow: scroll;
+  z-index: 1000;
 
   .autocomplete-list--element {
     border: 1px solid #ccc;

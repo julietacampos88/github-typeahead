@@ -5,7 +5,7 @@ export const SET_REPO_CONTRIBUTORS = '[Conributors] SET REPO CONTRIBUTORS';
 
 export class GetRepoContributors implements Action {
   readonly type = GET_REPO_CONTRIBUTORS;
-  constructor(public payload: {repo: string, user: string}) {}
+  constructor(public payload: any) {}
 }
 
 export class SetRepoContributors implements Action {

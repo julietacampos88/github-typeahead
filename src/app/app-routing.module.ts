@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { GraphComponent } from './graph/graph.component';
 
 const routes: Routes = [
-  { path: 'repo/:id', component: GraphComponent }
+  { path: 'repo', component: GraphComponent }
 ];
 
 @NgModule({

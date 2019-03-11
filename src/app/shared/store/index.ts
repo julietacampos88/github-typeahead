@@ -16,13 +16,14 @@ export interface State {
   repo: ContributorsReducer.ContributorsState;
 }
 
+// Put all the feature selectors together
 export const reducers: ActionReducerMap<State> = {
   typeahead: TypeaheadReducer.typeaheadReducer,
   repo: ContributorsReducer.contributorsReducer,
 };
 
 export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
-  return (state: State, action: any) => { // tslint:disable-line:no-any only-arrow-functions
+  return (state: State, action: any) => {
     console.debug('action', action); // tslint:disable-line:no-console
     return reducer(state, action);
   };

@@ -28,11 +28,7 @@ export class ContributorsEffects {
                 });
                 return new ContributorsActions.SetRepoContributors(newContributors);
               }
-            }),
-            // catchError((err) => {
-            //   console.log(err);
-            //   return new ContributorsActions.UsernameNotFound();
-            // })
+            })
           );
       })
     );

@@ -33,7 +33,6 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
       debounceTime(200)
     ).subscribe((value) => {
       if (value && value.username) {
-        console.log(value.username);
         this.store.dispatch(new TypeaheadActions.GetReposFromUsername(value.username));
       }
     });
@@ -63,7 +62,6 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
   }
 
   getContributors(repo: string) {
-    console.log('Get contributor');
     this.store.dispatch(new ContributorActions.GetRepoContributors({user: this.currentUser, repo}));
     this.router.navigate(['/repo']);
   }

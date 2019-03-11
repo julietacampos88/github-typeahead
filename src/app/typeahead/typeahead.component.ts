@@ -17,6 +17,9 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
 
   githubForm: FormGroup;
   formObservable: Subscription;
+  currentUserSubscription: Subscription;
+  noReposSubscription: Subscription;
+  showErrorSubscription: Subscription;
   repos$: Observable<any>;
   currentUser: string;
   hasError = false;
@@ -35,13 +38,22 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
       }
     });
     this.repos$ = this.store.pipe(select(RootState.GetReposValueSelector));
-    this.store.pipe(select(RootState.GetCurrentUserValueSelection)).subscribe(user => this.currentUser = user);
-    this.store.pipe(select(RootState.NoReposValueSelector)).subscribe(hasRepos => this.hasNoRepos = hasRepos);
-    this.store.pipe(select(RootState.ShowErrorsValueSelector)).subscribe(errors => this.hasError = errors);
+    this.currentUserSubscription = this.store.pipe(
+      select(RootState.GetCurrentUserValueSelection)
+      ).subscribe(user => this.currentUser = user);
+    this.noReposSubscription = this.store.pipe(
+      select(RootState.NoReposValueSelector)
+      ).subscribe(hasRepos => this.hasNoRepos = hasRepos);
+    this.showErrorSubscription = this.store.pipe(
+      select(RootState.ShowErrorsValueSelector)
+      ).subscribe(errors => this.hasError = errors);
   }
 
   ngOnDestroy() {
     this.formObservable.unsubscribe();
+    this.currentUserSubscription.unsubscribe();
+    this.noReposSubscription.unsubscribe();
+    this.showErrorSubscription.unsubscribe();
   }
 
   createForm() {

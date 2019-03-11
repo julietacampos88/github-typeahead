@@ -20,14 +20,12 @@ import { GithubService } from './shared/services/github.service';
 import { GraphComponent } from './graph/graph.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { OcticonsDirective } from './shared/octicons.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     TypeaheadComponent,
-    GraphComponent,
-    OcticonsDirective
+    GraphComponent
   ],
   imports: [
     BrowserModule,

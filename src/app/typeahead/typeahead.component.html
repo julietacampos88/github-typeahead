@@ -17,8 +17,7 @@
           class="typeahead--option"
           (click)="getContributors(repo.name)"
         >
-          <span class="typeahead--octicon" appOcticon="repo" width="14"></span
-          >&nbsp;{{ repo.name }}
+        <i class="material-icons">ballot</i>&nbsp;{{ repo.name }}
         </mat-option>
         <mat-option class="typeahead--option" *ngIf="hasNoRepos && !hasError">
           <span>Sorry, this user has no repos.</span>

@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import * as RootState from '../shared/store/index';
 import * as TypeaheadActions from '../shared/store/typeahed/typeahead.actions';
-import { Subscription, Observable } from 'rxjs';
+import { Subscription, Observable, timer } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import * as ContributorActions from '../shared/store/contributors/contributors.actions';
 import { Router } from '@angular/router';
 
@@ -25,7 +26,9 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.createForm();
-    this.formObservable = this.githubForm.valueChanges.subscribe((value) => {
+    this.formObservable = this.githubForm.valueChanges.pipe(
+      debounceTime(200)
+    ).subscribe((value) => {
       if (value && value.username) {
         console.log(value.username);
         this.store.dispatch(new TypeaheadActions.GetReposFromUsername(value.username));

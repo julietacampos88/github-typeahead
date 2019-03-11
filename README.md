@@ -30,3 +30,6 @@ The most difficult part for me was to figure out what this instruction meant:
 
 The way I interpreted it was that as I typed, I should get all the repos from the username I was typing. I wasn't entirely sure if I was supposed to make a typeahead with GitHub users and then select a user and then get a repo. Since an endpoint to get more usernames wasn't mentioned in the challenge information, I stuck to my original thought.
 
+### Why Angular Material?
+
+While I love doing CSS and I'm really good at transfering designs from images to code, coming up with my own is something that is incredibly difficult for me. This is why I decided to use a UI kit that I'm very familiar with and that already has a look and feel that looks good everywhere. I did use CSS and BEM for layouting and some general styles, but the rest it was all Material components. This also helped me create the UI faster so that I could focus on setting up the redux structure and getting the data where I needed it.

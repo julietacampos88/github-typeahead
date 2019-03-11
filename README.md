@@ -1,7 +1,7 @@
 # GithubTypeahead
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.5.
-The UI was created with Angular Material components and theme, and the chart was generated using the ngx-charts package.
+The UI was created with [Angular Material](https://material.angular.com) components and theme, and the chart was generated using the [ngx-charts](https://swimlane.github.io/ngx-charts/) package based on D3.
 
 ## Installation
 

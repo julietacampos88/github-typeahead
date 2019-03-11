@@ -49,10 +49,18 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.formObservable.unsubscribe();
-    this.currentUserSubscription.unsubscribe();
-    this.noReposSubscription.unsubscribe();
-    this.showErrorSubscription.unsubscribe();
+    if (this.formObservable) {
+      this.formObservable.unsubscribe();
+    }
+    if (this.currentUserSubscription) {
+      this.currentUserSubscription.unsubscribe();
+    }
+    if (this.noReposSubscription) {
+      this.noReposSubscription.unsubscribe();
+    }
+    if (this.showErrorSubscription) {
+      this.showErrorSubscription.unsubscribe();
+    }
   }
 
   createForm() {
